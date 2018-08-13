@@ -1,0 +1,69 @@
+框架
+Express--基于回调
+KOA
+    KOA 1.x--基于generator/yield
+    KOA 2.x--过渡：基于yield/await
+    KOA 3.X--基于async/await
+
+
+
+
+Express
+let server = express();
+server.listen(8080);
+
+server.get('/xxx', (req, res) => {})
+server.post('/xxx', (req, res) => {})
+server.use('/xxx', (req, res) => {})
+---------------------------------------------------
+中间件--插件
+express通过中间件实现
+---------------------------------------------------
+
+express、koa
+中间件：
+1.写、用在哪儿
+2.原理
+---------------------------------------------------
+设计：
+
+server.use(function(req, res, next) {
+    处理.....
+    ......
+    .....
+    next();
+});
+server.get(xxx);
+---------------------------------------------------
+实现？自己写一个express试试
+---------------------------------------------------
+响应方法
+res.send
+res.sendFile(res.sendFile可以是有控制的发送，server.use(express.static)是自动的)
+res.sendStatus(code)   404...
+res.redirect(url)
+
+原生Node:
+res.writeHeader(404);
+res.write('not found');
+
+express:
+res.sendStatus(404);
+
+
+---------------------------------------------------
+文件上传-multer
+1.引入、配置
+    const multer = require('multer');
+    let multerObj = multer({dest:'/xxx'});
+2.加给中间件
+    server.use(multerObj(any()))
+3.用files
+    req.files
+---------------------------------------------------
+cookie\session
+---------------------------------------------------
+路由
+---------------------------------------------------
+服务端渲染
+客户端渲染
